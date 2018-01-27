@@ -1,6 +1,8 @@
+from calculate import calculate_scores
+
 
 if __name__ == "__main__":
     players = read()
-    calculate_scores(players)
-    sort(players)
-    publish(players)
+    results = calculate_scores(players)
+    sort(results)
+    publish(results)
