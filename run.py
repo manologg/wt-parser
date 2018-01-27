@@ -1,3 +1,4 @@
+from reader import read
 
 if __name__ == "__main__":
     players = read()
