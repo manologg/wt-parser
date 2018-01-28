@@ -1,4 +1,4 @@
-from config import SCORES
+from config import SCORES, CATEGORIES
 
 
 def add_score(players_per_category):
@@ -18,17 +18,40 @@ def add_score(players_per_category):
 
 
 def calculate_scores(players):
-    categories = {player['category'] for player in players}
-
     result = dict()
 
-    for category in categories:
+    for category in CATEGORIES:
         players_per_category = [player for player in players if player['category'] == category]
         for player in players_per_category:
             player['total'] = int(player['round_1']) + int(player['round_2'])
+            player['key'] = player['name'] + player['city']
 
         players_per_category = add_score(players_per_category)
 
         result[category] = players_per_category
 
+    return result
+
+
+def get_player(player_list, player_key):
+    for player in player_list:
+        if player['key'] == player_key:
+            return player
+
+    return None
+
+
+def calculate_total_score(results):
+    result = dict()
+
+    for month in range(1, 13):
+        for category in CATEGORIES:
+            for player in results[month][category]:
+                player_stored = get_player(result[category], player['key'])
+                if player_stored is not None:
+                    result[category].extend(
+                        {'key': player['key'], 'name': player['name'], 'score_wt_' + str(month): player['score_wt']})
+                else:
+                    player_stored['score_wt_' + str(month)] = player['score_wt']
+                    result[category][player['key']] = player_stored
     return result
