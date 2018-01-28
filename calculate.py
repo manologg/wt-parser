@@ -5,7 +5,7 @@ def add_score(players_per_category):
     if len(players_per_category) == 0:
         return players_per_category
 
-    players_per_category.sort(key=lambda x: x['total'], reverse=True)
+    players_per_category.sort(key=lambda x: x['total'], reverse=False)
 
     players_per_category[0]['score_wt'] = SCORES[0]
     for i in range(1, len(players_per_category)):
@@ -23,7 +23,7 @@ def calculate_scores(players):
     result = dict()
 
     for category in categories:
-        players_per_category = [player for player in players if player['category'] is category]
+        players_per_category = [player for player in players if player['category'] == category]
         for player in players_per_category:
             player['total'] = int(player['round_1']) + int(player['round_2'])
 
