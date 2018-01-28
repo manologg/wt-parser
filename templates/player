@@ -1,0 +1,16 @@
+<tr>
+    <td class="center">{name}</td>
+    <td class="center">{score_wt_1}</td>
+    <td class="center">{score_wt_2}</td>
+    <td class="center">{score_wt_3}</td>
+    <td class="center">{score_wt_4}</td>
+    <td class="center">{score_wt_5}</td>
+    <td class="center">{score_wt_6}</td>
+    <td class="center">{score_wt_7}</td>
+    <td class="center">{score_wt_8}</td>
+    <td class="center">{score_wt_9}</td>
+    <td class="center">{score_wt_10}</td>
+    <td class="center">{score_wt_11}</td>
+    <td class="center">{score_wt_12}</td>
+    <td class="center">{score_wt_total}</td>
+</tr>

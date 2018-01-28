@@ -1,0 +1,30 @@
+<b>{category}</b>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>&nbsp;</th>
+        <th class="center">WT01</th>
+        <th class="center">WT02</th>
+        <th class="center">WT03</th>
+        <th class="center">WT04</th>
+        <th class="center">WT05</th>
+        <th class="center">WT06</th>
+        <th class="center">WT07</th>
+        <th class="center">WT08</th>
+        <th class="center">WT09</th>
+        <th class="center">WT10</th>
+        <th class="center">WT11</th>
+        <th class="center">WT12</th>
+        <th class="center">Gesamt</th>
+    </tr>
+    <thead>
+
+    <tbody>
+        {players}
+    <tbody>
+
+</table>
+
+<br/>
