@@ -99,5 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# IntelliJ
 .idea/
 .idea*
+
+# git
+*.orig
