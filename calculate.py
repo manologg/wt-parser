@@ -1,4 +1,4 @@
-from config import SCORES, CATEGORIES
+from config import URLS, SCORES, CATEGORIES
 
 
 def add_score(players_per_category):
@@ -77,7 +77,7 @@ def calculate_totals(total_result):
 def calculate_total_score(results):
     total_result = {key: [] for key in CATEGORIES}
 
-    for month in range(1, 13):
+    for month in URLS.keys():
         for category in CATEGORIES:
             try:
                 for player in results[month][category]:

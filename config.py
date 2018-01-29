@@ -1,5 +1,6 @@
 URLS = {
-    1: "http://www.frisbee-nrw.de/2018/01/13/dziuba-rockt-den-kletterpark/"
+    1: "http://www.frisbee-nrw.de/2018/01/13/dziuba-rockt-den-kletterpark/",
+    2: "http://www.frisbee-nrw.de/2018/01/13/dziuba-rockt-den-kletterpark/",
     # 2: ...
     # 3: ...
 }
