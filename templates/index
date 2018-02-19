@@ -1,3 +1,48 @@
-<h1>Westfalen Tour 2018</h1>
+<html>
 
-{categories}
+    <head>
+        <title>Westfalen Tour 2018</title>
+        <style>
+            .class-A tr:nth-child(odd) > td {{
+                background-color: #d0ffcc;
+            }}
+            .class-A tr:nth-child(even) > td {{
+                background-color: #00ce00;
+            }}
+            .class-B tr:nth-child(odd) > td {{
+                background-color: lightyellow;
+            }}
+            .class-B tr:nth-child(even) > td {{
+                background-color: yellow;
+            }}
+            .class-C tr:nth-child(odd) > td {{
+                background-color: lightblue;
+            }}
+            .class-C tr:nth-child(even) > td {{
+                background-color: #63a9ff;
+            }}
+            .class-D tr:nth-child(odd) > td {{
+                background-color: #ffc68c;
+            }}
+            .class-D tr:nth-child(even) > td {{
+                background-color: orange;
+            }}
+            td,th {{
+                padding: 6px;
+                text-align: center;
+            }}
+            td:nth-child(2) {{
+                text-align: left;
+            }}
+        </style>   
+
+    </head>
+
+    <body>
+
+        <h1>Westfalen Tour 2018</h1>
+        {categories}
+
+    </body>
+
+</html>

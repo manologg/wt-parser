@@ -1,9 +1,10 @@
-<b>{category}</b>
+<b>{category}-Klasse</b>
 
-<table>
+<table cellspacing="0" class="class-{category}">
 
     <thead>
     <tr>
+        <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th class="center">WT01</th>
         <th class="center">WT02</th>
