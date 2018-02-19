@@ -14,16 +14,20 @@ def ensure_all_fields(player):
     if 'score_wt_total' not in player:
         player['score_wt_total'] = ''
 
-def publish(total_results, results):
+def publish(total_results):
 
     categories_html = ''
     for category in CATEGORIES:
 
         players_html = ''
         players = total_results[category]
+        players.sort(key=lambda x: x['score_wt_total'], reverse=True)
+        position = 1
         for player in players:
             ensure_all_fields(player)
+            player['position'] = '{}.'.format(position)
             players_html += player_template.format(**player)
+            position += 1
 
         categories_html += category_template.format(category=category, players=players_html)
 

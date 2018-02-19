@@ -1,4 +1,5 @@
 <tr>
+    <td class="center">{position}</td>
     <td class="center">{name}</td>
     <td class="center">{score_wt_1}</td>
     <td class="center">{score_wt_2}</td>

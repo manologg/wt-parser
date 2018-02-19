@@ -1,37 +1,52 @@
-from config import URLS, SCORES, CATEGORIES
+from config import DATA, SCORES, CATEGORIES
 
 
-def add_score(players_per_category):
-    if len(players_per_category) == 0:
-        return players_per_category
+def add_score_to_players(players):
+    if len(players) == 0:
+        return players
 
-    players_per_category.sort(key=lambda x: x['total'], reverse=False)
+    players.sort(key=lambda x: x['total'], reverse=False)
+    players[0]['score_wt'] = SCORES[0]
 
-    players_per_category[0]['score_wt'] = SCORES[0]
-    for i in range(1, len(players_per_category)):
-        if players_per_category[i]['total'] == players_per_category[i - 1]['total']:
-            players_per_category[i]['score_wt'] = players_per_category[i - 1]['score_wt']
+    for i in range(1, len(players)):
+        if players[i]['total'] == players[i - 1]['total']:
+            players[i]['score_wt'] = players[i - 1]['score_wt']
         else:
-            players_per_category[i]['score_wt'] = SCORES[i]
+            try:
+                next_score = SCORES[i]
+            except IndexError:
+                next_score = 1
+            players[i]['score_wt'] = next_score
 
-    return players_per_category
+    return players
 
 
 def calculate_scores(players):
     result = dict()
 
     for category in CATEGORIES:
-        players_per_category = [player for player in players if player['category'] == category]
+        players_per_category = get_players_from_category(category, players)
         for player in players_per_category:
-            player['total'] = int(player['round_1']) + int(player['round_2'])
-            player['key'] = player['name'] + player['city']
+            calculate_total_and_key(player)
 
-        players_per_category = add_score(players_per_category)
+        players_per_category = add_score_to_players(players_per_category)
 
         result[category] = players_per_category
 
     return result
 
+def get_players_from_category(category, players):
+
+    if category == 'D':
+        category_check = lambda player_category: player_category in ['D', 'E']
+    else:
+        category_check = lambda player_category: player_category == category
+
+    return [player for player in players if category_check(player['category'])]
+
+def calculate_total_and_key(player):
+    player['total'] = int(player['round_1']) + int(player['round_2'])
+    player['key'] = player['name'] # + player['city']
 
 def get_player(total_result, player_key, category):
     try:
@@ -77,19 +92,20 @@ def calculate_totals(total_result):
 def calculate_total_score(results):
     total_result = {key: [] for key in CATEGORIES}
 
-    for month in URLS.keys():
+    for month in DATA.keys():
         for category in CATEGORIES:
-            try:
-                for player in results[month][category]:
-                    player_stored = get_player(total_result, player['key'], category)
-                    if player_stored is None:
-                        total_result[category].append(
-                            {'key': player['key'], 'name': player['name'],
-                             'score_wt_' + str(month): player['score_wt']})
-                    else:
-                        player_stored['score_wt_' + str(month)] = player['score_wt']
-            except KeyError:
-                pass  # there is no results for this month
+            for player in results[month][category]:
+                player_stored = get_player(total_result, player['key'], category)
+                if player_stored is None:
+                    total_result[category].append({
+                        'key': player['key'],
+                        'name': player['name'],
+                        'club': player['club'],
+                        'city': player['city'],
+                        'score_wt_' + str(month): player['score_wt']
+                    })
+                else:
+                    player_stored['score_wt_' + str(month)] = player['score_wt']
 
     calculate_totals(total_result)
 
