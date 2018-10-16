@@ -34,7 +34,9 @@
             td:nth-child(2) {{
                 text-align: left;
             }}
-        </style>   
+        </style>
+        
+         <meta charset="UTF-8"> 
 
     </head>
 

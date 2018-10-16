@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from reader import read
 from calculate import calculate_scores, calculate_total_score
 from publisher import publish

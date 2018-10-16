@@ -66,9 +66,9 @@ def get_best_results(player):
     for key in player.keys():
         if key.startswith('score_wt_'):
             results[key] = player[key]
-
+    
     result_pairs = list(results.items())
-    result_pairs.sort(key=lambda x: x[1], reverse=False)
+    result_pairs.sort(key=lambda x: x[1], reverse=True)
     return [x[0] for x in result_pairs][:7]
 
 
@@ -101,7 +101,7 @@ def calculate_total_score(results):
                         'key': player['key'],
                         'name': player['name'],
                         'club': player['club'],
-                        'city': player['city'],
+                        # 'city': player['city'],
                         'score_wt_' + str(month): player['score_wt']
                     })
                 else:

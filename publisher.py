@@ -26,7 +26,12 @@ def publish(total_results):
         for player in players:
             ensure_all_fields(player)
             player['position'] = '{}.'.format(position)
-            players_html += player_template.format(**player)
+            try:
+                players_html = '{}{}'.format(players_html, player_template.format(**player))
+            except UnicodeEncodeError as e:
+                import ipdb; ipdb.set_trace()
+            except UnicodeDecodeError as e:
+                import ipdb; ipdb.set_trace()
             position += 1
 
         categories_html += category_template.format(category=category, players=players_html)
