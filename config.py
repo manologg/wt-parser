@@ -68,10 +68,10 @@ DATA = {
         'url': "http://www.frisbee-nrw.de/2018/07/25/wt1808-spass-am-rabennest-kallenhardt-warsteiner-bikepark/",
         'parse_function': parse_9_cols_without_city
     },
-#    9: {
-#        'url': "",
-#        'parse_function': parse_9_cols_without_city
-#    },
+    9: {
+        'url': "http://www.frisbee-nrw.de/2018/08/10/wt1809-ich-und-mein-holz-die-wt-zu-gast-beim-waldmonster-bad-fredeburg/",
+        'parse_function': parse_9_cols_without_city
+    },
     10: {
         'url': "http://www.frisbee-nrw.de/2018/10/14/wt1810-beckum-hochsommerliches-wetter-im-oktober/",
         'parse_function': parse_9_cols_without_city

@@ -10,7 +10,14 @@ def read(month):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     all_tables = soup.find_all('table')
-    table = all_tables[0] if len(all_tables[0]) > 2 else all_tables[1]
+    
+    # Get the first table with more than 2 columns...
+    # ... and the first column shall not contain "flight"
+    # Yes, it's not that nice
+
+    table = next(t for t in all_tables if len(t) > 2 and 'flight' not in t.find('tr').text.lower())
+    
+    
     players = []
     for tr in table.find_all('tr'):
         attributes = [td.string for td in tr.find_all('td')]
