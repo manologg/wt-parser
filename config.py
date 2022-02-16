@@ -10,9 +10,9 @@ def parse_8_cols(attributes):
     total = int(attributes[7])
     player = {
         # 'position': attributes[0],
-        'name': unicode(attributes[1]).encode('utf-8'),
-        'club': unicode(attributes[2]).encode('utf-8'),
-        # 'city': unicode(attributes[3]).encode('utf-8'),
+        'name': attributes[1],
+        'club': attributes[2],
+        # 'city': attributes[3],
         'category': category,
         'round_1': round_1,
         'round_2': round_2,
